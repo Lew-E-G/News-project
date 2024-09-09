@@ -1,0 +1,61 @@
+import requests
+import json
+from keys import news_key
+from datetime import datetime, timedelta
+
+
+# Your API key (replace with your actual API key)
+api_key = news_key
+
+# Base URL for the News API
+url = 'https://newsapi.org/v2/everything'
+seven_days_ago_str = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
+
+# Parameters for the API request
+params = {
+    'q': '"knife" OR "blade" OR "stab" OR "stabbing" OR "stabbed"',
+    'apiKey': api_key,
+    'language': 'en',
+    'dateStart': seven_days_ago_str,
+    'sortBy': 'relevancy',
+    'pageSize': 10,  # Number of articles to fetch
+    'sources': 'bbc-news'  # You can specify specific sources
+}
+def fetch_bbc():
+    # Make the API request
+    response = requests.get(url, params=params)
+
+    # Shows remaining requests do this key
+    # rate_limit_remaining = response.headers.get('X-Cache-Remaining')
+    # print(f"Requests Remaining: {rate_limit_remaining}")
+
+    # Shows name of all headers in response
+    # for header, value in response.headers.items():
+    #     print(f"{header}: {value}")
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the JSON response
+        results = response.json()['articles']
+        # Prints all info (pretty)
+        # print(json.dumps(articles, indent=4))
+        
+        # Create a list to store the fetched articles
+        articles = []
+
+        # Display the fetched news articles
+        for article in results:
+            article_data = {
+                'API':'News',
+                'published_at': article['publishedAt'],
+                'title': article['title'],
+                # 'body': article['fields'].get('body', 'No body content available'),
+                'url': article['url']
+            }
+            articles.append(article_data)
+        return articles
+    else:
+        print(f"Failed to retrieve news. Status code: {response.status_code}")
+
+if __name__ == '__main__':
+    fetch_bbc()
