@@ -17,8 +17,8 @@ df_guardian = pd.DataFrame(guardian_data)
 df_allArticles = pd.concat([df_bbc,df_guardian], ignore_index=True).drop_duplicates(subset='url')
 
 #DB file
-db_file = 'cleaned_articles.db'
-conn = sqlite3.connect('cleaned_articles.db')
+db_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'cleaned_articles.db')
+conn = sqlite3.connect(db_file)
 cursor = conn.cursor()
 
 #combine the dataframes and drop duplicates
