@@ -22,7 +22,7 @@ params = {
     'from-date': seven_days_ago_str,  # Optional: Set the start date for the articles
     'to-date': current_date_str,  # Optional: Set the end date for the articles
     'api-key': api_key,  # Your API key
-    'page-size': 10,  # Optional: Number of results per page (can adjust as needed)
+    'page-size': 100,  # Optional: Number of results per page (can adjust as needed)
     #'order-by': 'relevance',  # Optional: Order results by relevance
     'show-fields': 'headline,webPublicationDate,shortUrl,body'  # Optional: Fields to include in the response
 }

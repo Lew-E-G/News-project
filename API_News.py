@@ -18,7 +18,7 @@ params = {
     'language': 'en',
     'dateStart': seven_days_ago_str,
     'sortBy': 'relevancy',
-    'pageSize': 10,  # Number of articles to fetch
+    'pageSize': 100,  # Number of articles to fetch
     'sources': 'bbc-news'  # You can specify specific sources
 }
 def fetch_bbc():
@@ -46,12 +46,14 @@ def fetch_bbc():
         # Display the fetched news articles
         for article in results:
             article_data = {
-                'API':'News',
+                'API':'BBC',
                 'published_at': article['publishedAt'],
                 'title': article['title'],
                 # 'body': article['fields'].get('body', 'No body content available'),
                 'url': article['url']
             }
+            #for testing to see what article data was fetched
+            #print(article_data)
             articles.append(article_data)
         return articles
     else:
