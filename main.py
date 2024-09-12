@@ -32,6 +32,7 @@ df_allTheftArticles = merge_df(bbc_theft_data, guardian_theft_data)
 db_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'cleaned_articles.db')
 conn = sqlite3.connect(db_file)
 cursor = conn.cursor()
+tables = ['knife_table', 'theft_table']
 
 # Common table structure
 table_structure = '''
@@ -58,6 +59,19 @@ cursor.execute(f'''
 #append data to relevant table 
 df_allKnifeArticles.to_sql('knife_table', conn, if_exists='append', index=False)
 df_allTheftArticles.to_sql('theft_table', conn, if_exists='append', index=False)
+
+for table in tables:
+    # Step 1: Read the data from each table into a Pandas DataFrame
+    df = pd.read_sql(f'SELECT * FROM {table}', conn)
+    
+    # Step 2: Remove duplicates based on the 'url' column
+    df_cleaned = df.drop_duplicates(subset=['url'])
+
+    # Order by date the article was published
+    df_ordered = df_cleaned.sort_values(by='published_at')
+    
+    # Step 3: Write the cleaned DataFrame back to the SQLite table (replace the old data)
+    df_ordered.to_sql(table, conn, if_exists='replace', index=False)
 
 conn.close()
 # Specify the CSV file name
