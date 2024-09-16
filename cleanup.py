@@ -27,6 +27,9 @@ def order_articles_csv(csv_file):
     df_sorted_unique.to_csv(csv_file, index=False)
 
 def order_articles_db(tables):
+    db_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'cleaned_articles.db')
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
     for table in tables:
         # Step 1: Read the data from each table into a Pandas DataFrame
         df = pd.read_sql(f'SELECT * FROM {table}', conn)
@@ -39,6 +42,7 @@ def order_articles_db(tables):
         
         # Step 3: Write the cleaned DataFrame back to the SQLite table (replace the old data)
         df_ordered.to_sql(table, conn, if_exists='replace', index=False)
+    conn.close()
 
 if __name__ == '__main__':
     order_articles_db()

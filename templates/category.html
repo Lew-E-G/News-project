@@ -8,6 +8,9 @@
 <body>
     <h1>{{title}}</h1>
     <button onclick="history.back()">Go Back</button>  <!-- Back button -->
+    <form action="" method="post">
+        <button type="submit">Refresh Data</button>
+    </form>    
     <ul>
         {% for article in articles %}
         <li>
