@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, render_template,request
 import os
 from main import data_refresh
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -30,7 +31,10 @@ def knife_crime():
     articles = cursor.fetchall()
 
     conn.close()
-    return render_template('category.html', title=title, articles=articles)
+
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    return render_template('category.html', title=title, articles=articles, current_time=current_time)
 
 @app.route('/theft', methods=['GET', 'POST'])
 def theft():
@@ -48,7 +52,10 @@ def theft():
     articles = cursor.fetchall()
 
     conn.close()
-    return render_template('category.html', title=title, articles=articles)
+
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    return render_template('category.html', title=title, articles=articles, current_time=current_time)
 
 # additional category to add on the backend
 # @app.route('/drugs', methods=['GET', 'POST'])
