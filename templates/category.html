@@ -7,8 +7,19 @@
 </head>
 <body>
     <h1>{{title}}</h1>
-    <button onclick="history.back()">Go Back</button>  <!-- Back button -->
-    <form action="" method="post">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="alert alert-{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('home') }}" method="GET">
+        <button type="submit">Go to Home</button>
+    </form>
+    <form action="" method="POST">
         <button type="submit">Refresh Data</button>
     </form>    
     <ul>
