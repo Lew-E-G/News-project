@@ -27,10 +27,11 @@ def data_refresh():
         df_allArticles['url'].fillna('No URL available', inplace=True)
         return df_allArticles
 
+    #merging dataframes from multiple sources by category
     df_allKnifeArticles = merge_df(bbc_knife_data, guardian_knife_data)
     df_allTheftArticles = merge_df(bbc_theft_data, guardian_theft_data)
 
-    #DB file
+    #create and connect to DB file
     db_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'cleaned_articles.db')
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()

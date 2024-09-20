@@ -26,6 +26,7 @@ def order_articles_csv(csv_file):
     # Save the modified DataFrame back to the CSV file
     df_sorted_unique.to_csv(csv_file, index=False)
 
+#main function to clean the tables
 def order_articles_db(tables):
     db_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'cleaned_articles.db')
     conn = sqlite3.connect(db_file)
