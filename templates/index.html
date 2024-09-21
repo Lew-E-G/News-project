@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streets Talk</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
     <h1>News Categories</h1>
+    <p>The news source which is designed to get straight to the point <br>
+    With a focus on crimes which have plagued the UK </p>
     <a href="/knife-crime"><button>Knife Crime</button></a>
+    <img src="{{ url_for('static', filename='images/knife.webp') }}" alt="Knife Crime">
     <a href="/theft"><button>Theft</button></a>
+    <img src="{{ url_for('static', filename='images/theft.webp') }}" alt="Theft">
     <a href="/drugs"><button>Drugs</button></a>
+    <img src="{{ url_for('static', filename='images/drugs.webp') }}" alt="Drugs">
 </body>
 </html>
