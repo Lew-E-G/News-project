@@ -14,7 +14,7 @@ def home():
 
 @app.route('/knife-crime', methods=['GET', 'POST'])
 def knife_crime():
-    title = 'Knife Crime'
+    page_title = 'Knife Crime'
     #refresh button
     if request.method == 'POST':
         try:
@@ -31,16 +31,26 @@ def knife_crime():
     #query to db
     cursor.execute("SELECT api, published_at, title, url FROM knife_table")
     articles = cursor.fetchall()
+    formatted_articles = []
+
+    #reformats the date column removing the time
+    for article in articles:
+        api, published_at, title, url = article
+        # Parse and format the date
+        date_obj = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ")
+        formatted_date = date_obj.strftime("%d/%m/%Y")  # Format as DD/MM/YYYY
+        # Append the formatted article
+        formatted_articles.append((api, formatted_date, title, url))
 
     conn.close()
 
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    return render_template('category.html', title=title, articles=articles, current_time=current_time)
+    return render_template('category.html', page_title=page_title, articles=formatted_articles, current_time=current_time)
 
 @app.route('/theft', methods=['GET', 'POST'])
 def theft():
-    title = 'Theft and Robbery'
+    page_title = 'Theft and Robbery'
     #refresh button
     if request.method == 'POST':
         try:
@@ -57,12 +67,22 @@ def theft():
     #query to db
     cursor.execute("SELECT api, published_at, title, url FROM theft_table")
     articles = cursor.fetchall()
+    formatted_articles = []
+    
+    #reformats the date column removing the time
+    for article in articles:
+        api, published_at, title, url = article
+        # Parse and format the date
+        date_obj = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ")
+        formatted_date = date_obj.strftime("%d/%m/%Y")  # Format as DD/MM/YYYY
+        # Append the formatted article
+        formatted_articles.append((api, formatted_date, title, url))
 
     conn.close()
 
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    return render_template('category.html', title=title, articles=articles, current_time=current_time)
+    return render_template('category.html', page_title=page_title, articles=formatted_articles, current_time=current_time)
 
 # additional category to add on the backend
 # @app.route('/drugs', methods=['GET', 'POST'])

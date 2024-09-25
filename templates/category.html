@@ -8,7 +8,7 @@
      <link rel="stylesheet" href="../static/CSS/styles.css">
 </head>
 <body>
-    <h1 id="cata-head">{{title}}</h1>
+    <h1>{{page_title}}</h1>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul>
@@ -26,7 +26,7 @@
     </form>    
     <ul>
         {% for article in articles %}
-        <li>
+        <li class="article-bubble">
             <a href="{{ article[3] }}" target="_blank">{{ article[0] }}</a> - {{article[2]}} Published on {{ article[1] }}
         </li>
         {% endfor %}
