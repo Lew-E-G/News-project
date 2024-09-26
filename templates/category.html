@@ -19,15 +19,17 @@
         {% endif %}
     {% endwith %}
     <form action="{{ url_for('home') }}" method="GET">
-        <button type="submit">Go to Home</button>
+        <button type="submit" class="left-align">Go to Home</button>
     </form>
     <form action="" method="POST">
-        <button type="submit">Refresh Data</button>
+        <button type="submit" class="right-align">Refresh Data</button>
     </form>    
+    <br>
     <ul>
         {% for article in articles %}
-        <li class="article-bubble">
-            <a href="{{ article[3] }}" target="_blank">{{ article[0] }}</a> - {{article[2]}} Published on {{ article[1] }}
+        <li class="article-bubble ">
+            <a href="{{ article[3] }}" target="_blank">{{ article[0] }}</a> - {{article[2]}} 
+            <span class="right-align">Published on {{ article[1] }}</span>
         </li>
         {% endfor %}
     </ul>

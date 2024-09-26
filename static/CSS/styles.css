@@ -2,12 +2,32 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: antiquewhite
 }
+img {
+    height: 200px;
+}
 .article-bubble {
     background-color: #f0f0f0;  /* Light background color for the bubble */
     border: px solid #ccc;      /* Optional border */
     padding: 15px;               /* Space inside the bubble */
     border-radius: 15px;         /* Rounded corners */
-    margin: 10px 0;              /* Space between each bubble */
+    margin: 20px 0;              /* Space between each bubble */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);  /* Adds a subtle shadow */
     list-style: none;            /* Remove default bullet points */
+}
+h1 {
+    text-align: center;  /* Centers text horizontally within the row */
+}
+button {
+    background-color: grey;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+.spacing {
+    padding-bottom: 30px;
+}
+.left-align {
+    float: left;
+}
+.right-align {
+    float: right;
 }
