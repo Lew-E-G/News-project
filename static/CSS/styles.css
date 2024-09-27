@@ -3,7 +3,7 @@
 html,
 body {
     /* background-color: rgb(59,59,59); */
-    background-image: url('../images/London.webp');
+    background-image: url('../images/London.jpg');
     background-size: cover; /* Ensures the image covers the entire background */
     background-color: rgba(0, 0, 0, 0.5); /* Black color with 50% opacity */
     background-blend-mode: multiply; /* Blends the color with the image */
@@ -38,14 +38,22 @@ img {
 
 h1 {
     text-align: center;  /* Centers text horizontally within the row */
-    Font-family: Dejavu Sans, Arial, Verdana, sans-serif;
+    Font-family: Didot, Didot LT STD, Hoefler Text, Garamond, Calisto MT, Times New Roman, serif;   
     color: white;
+    font-size: 140px;
+    margin-bottom: -50px;
 }
 h2 {
     color: white;
+    Font-family: Optima, sans-serif;
+    font-size: 70px;
 }
 p {
     color: white;
+    Font-family: Optima, sans-serif;
+    font-size: 70px;
+    position: relative;
+    bottom: 20px;
 }
 button {
     background-color: black;
