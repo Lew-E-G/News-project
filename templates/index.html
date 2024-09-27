@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streets Talk</title>
     <link rel="stylesheet" href="../static/CSS/styles.css">
+    <script defer src="../static/JS/app.js"></script>
 </head>
 <body>
-    <h1>News Categories</h1>
-    <p>The news source which is designed to get straight to the point <br>
-    With a focus on crimes which have plagued the UK </p>
-    <a href="/knife-crime"><button>Knife Crime</button></a>
-    <img src="{{ url_for('static', filename='images/knife.webp') }}" alt="Knife Crime">
-    <a href="/theft"><button>Theft</button></a>
-    <img src="{{ url_for('static', filename='images/theft.webp') }}" alt="Theft">
-    <a href="/drugs"><button>Drugs</button></a>
-    <img src="{{ url_for('static', filename='images/drugs.webp') }}" alt="Drugs">
+    <section class="hidden">
+        <h1>Name TBD</h1>
+        <p>The news source which is designed to get straight to the point <br>
+        With a focus on crimes which have plagued the UK </p>
+    </section>
+    <section>
+        <h2 class="hidden">Categories</h2>
+        <div class="logo">
+            <a class="hidden logo" href="/knife-crime">
+                <img src="{{ url_for('static', filename='images/knife.webp') }}" alt="Knife Crime">
+            </a>
+            
+            <a class="hidden logo" href="/theft">
+                <img src="{{ url_for('static', filename='images/theft.webp') }}" alt="Theft">
+            </a>
+
+            <a class="hidden logo" href="/drugs">
+                <img src="{{ url_for('static', filename='images/drugs.webp') }}" alt="Drugs">
+            </a>
+        </div>
+    </section>
 </body>
 </html>
