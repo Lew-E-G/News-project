@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Cairo');
 
 html,
 body {
@@ -37,18 +37,16 @@ img {
 }
 
 h1 {
-    text-align: center;  /* Centers text horizontally within the row */
-    Font-family: Didot, Didot LT STD, Hoefler Text, Garamond, Calisto MT, Times New Roman, serif;   
-    color: white;
     font-size: 140px;
     margin-bottom: -50px;
-    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
-
+    letter-spacing: 3px;
+    line-height: 2;
 }
+
 h2 {
-    color: white;
     Font-family: Optima, sans-serif;
     font-size: 70px;
+    margin-bottom: -20px;
 }
 p {
     color: white;
@@ -72,10 +70,20 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    letter-spacing: 1px;
-    line-height:2
-  }
+    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Vendor prefixes and fallback for older browser compatibility */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+
+    /* Required for clipping background to text */
+    -webkit-text-fill-color: transparent;  /* Required for Webkit browsers (Chrome, Safari, Edge) */
+    color: transparent;  /* General transparency setting */
+}
 
 .hidden {
     opacity: 0;                     /* Makes the element invisible */
