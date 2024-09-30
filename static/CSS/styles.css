@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo');
+@keyframes shimmer {
+    0% {
+        background-position: -250% 0;  /* Start gradient off-screen to the left */
+    }
+    50% {
+        background-position: 50% 0;   /* Move gradient across to the right */
+    }
+    100% {
+        background-position: 250% 0;   /* End gradient off-screen to the right */
+    }
+}
 
 html,
 body {
@@ -37,20 +48,25 @@ img {
 }
 
 h1 {
+    font-family: "Cairo";
     font-size: 140px;
     margin-bottom: -50px;
     letter-spacing: 3px;
     line-height: 2;
+    color: rgb(13, 13, 13);
 }
 
 h2 {
-    Font-family: Optima, sans-serif;
+    font-family: "Cairo";
     font-size: 70px;
     margin-bottom: -20px;
+    text-shadow: rgb(147, 118, 0) 1px 0 3px;
+    color: rgb(13, 13, 13);
 }
 p {
-    color: white;
-    Font-family: Optima, sans-serif;
+    text-shadow: rgb(147, 118, 0) 1px 0 3px;
+    color: rgb(13, 13, 13);
+    font-family: "Cairo";
     font-size: 70px;
     position: relative;
     bottom: 20px;
@@ -62,34 +78,52 @@ button {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
+.section-tint {
+    background-color: rgba(0, 0, 0, 0.7); /* Black color with 50% opacity */
+}
+
 .title {
-    font-family: "Cairo";
     text-align: center;
-    color: #FFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    
+    /* background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
 
     /* Vendor prefixes and fallback for older browser compatibility */
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text;
     -moz-background-clip: text;
-    background-clip: text;
+    background-clip: text; */
 
     /* Required for clipping background to text */
-    -webkit-text-fill-color: transparent;  /* Required for Webkit browsers (Chrome, Safari, Edge) */
-    color: transparent;  /* General transparency setting */
+    /* -webkit-text-fill-color: transparent; */
+    /* color: transparent; */
+}
+
+.shimmer-text {
+    color: #444;  /* Dark grey base color of the text */
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 215, 0, 0) 0%,       /* Transparent part of the gradient */
+        rgba(255, 215, 0, 0.8) 50%,    /* Dark yellow (gold) with some opacity for shimmer */
+        rgba(255, 215, 0, 0) 100%      /* Transparent again */
+    );
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;     /* For compatibility with Safari */
+    color: transparent;                /* Make text itself transparent to show the background */
+    animation: shimmer 4s;    /* Apply shimmer animation */
 }
 
 .hidden {
     opacity: 0;                     /* Makes the element invisible */
     transition: all 1s;              /* Smooth transition time */
     filter: blur(5px);               /* Adds blur effect */
-    transform: translateX(-100%);    /* Moves the element off the screen to the left */
+    transform: translateX(-5%);    /* Moves the element off the screen to the left */
 }
 
 /* This media query handles users who prefer reduced motion for accessibility purposes */
