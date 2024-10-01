@@ -4,10 +4,10 @@
         background-position: -250% 0;  /* Start gradient off-screen to the left */
     }
     50% {
-        background-position: 50% 0;   /* Move gradient across to the right */
+        background-position: 100% 0;   /* Move gradient across to the right */
     }
     100% {
-        background-position: 250% 0;   /* End gradient off-screen to the right */
+        background-position: 0% 0;   /* End gradient off-screen to the right */
     }
 }
 
@@ -54,17 +54,18 @@ h1 {
     letter-spacing: 3px;
     line-height: 2;
     color: rgb(13, 13, 13);
+    text-shadow: rgb(147, 118, 0) 1px 0 10px;
 }
 
 h2 {
     font-family: "Cairo";
     font-size: 70px;
     margin-bottom: -20px;
-    text-shadow: rgb(147, 118, 0) 1px 0 3px;
+    text-shadow: rgb(147, 118, 0) 1px 0 10px;
     color: rgb(13, 13, 13);
 }
 p {
-    text-shadow: rgb(147, 118, 0) 1px 0 3px;
+    text-shadow: rgb(147, 118, 0) 1px 0 5px;
     color: rgb(13, 13, 13);
     font-family: "Cairo";
     font-size: 70px;
