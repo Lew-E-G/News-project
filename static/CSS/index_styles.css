@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+@keyframes shimmer {
+    0% {
+        background-position: -250% 0;  /* Start gradient off-screen to the left */
+    }
+    50% {
+        background-position: 100% 0;   /* Move gradient across to the right */
+    }
+    100% {
+        background-position: 0% 0;   /* End gradient off-screen to the right */
+    }
+}
+
+html,
+body {
+    /* background-color: rgb(59,59,59); */
+    background-image: url('../images/London.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-color: rgba(0, 0, 0, 0.5); /* Black color with 50% opacity */
+    background-blend-mode: multiply; /* Blends the color with the image */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Makes the background image static */
+    scroll-snap-type: y mandatory;  /* Enable vertical scroll snapping */
+    margin: 0;
+    overflow-y: scroll;            /* Ensures the body is scrollable */
+    height: 100vh;
+    scroll-behavior: smooth;      /* Smooth scrolling between sections */
+}
+
+a {
+    text-decoration: none;      /* Removes underline from links */
+    border: none;
+}
+
+section {
+    display: grid;      /* places everything in a grid */
+    place-items: center;
+    align-content: center;      /* centers all the content */
+    min-height: 100vh;          /* creates space between the sections */
+    scroll-snap-align: start;      /* Snap to the top of each section when scrolling */
+}
+
+img {
+    height: 200px;              /* Sizing */
+    border-radius: 50px;        /* Rounded corners */
+    margin: 10px;               /* Spacing between category images */
+}
+
+h1 {
+    font-family: "Cairo";
+    font-size: 140px;
+    margin-bottom: -50px;
+    letter-spacing: 3px;
+    line-height: 2;
+    color: rgb(13, 13, 13);
+    text-shadow: rgb(147, 118, 0) 1px 0 10px;
+}
+
+h2 {
+    font-family: "Cairo";
+    font-size: 70px;
+    margin-bottom: -20px;
+    text-shadow: rgb(147, 118, 0) 1px 0 10px;
+    color: rgb(13, 13, 13);
+}
+p {
+    text-shadow: rgb(147, 118, 0) 1px 0 5px;
+    color: rgb(13, 13, 13);
+    font-family: "Cairo";
+    font-size: 70px;
+    position: relative;
+    bottom: 20px;
+}
+button {
+    background-color: black;
+    color: wheat;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.section-tint {
+    background-color: rgba(0, 0, 0, 0.7); /* Black color with 50% opacity */
+}
+
+.title {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+
+    /* Vendor prefixes and fallback for older browser compatibility */
+    /* -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text; */
+
+    /* Required for clipping background to text */
+    /* -webkit-text-fill-color: transparent; */
+    /* color: transparent; */
+}
+
+.shimmer-text {
+    color: #444;  /* Dark grey base color of the text */
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 215, 0, 0) 0%,       /* Transparent part of the gradient */
+        rgba(255, 215, 0, 0.8) 50%,    /* Dark yellow (gold) with some opacity for shimmer */
+        rgba(255, 215, 0, 0) 100%      /* Transparent again */
+    );
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;     /* For compatibility with Safari */
+    color: transparent;                /* Make text itself transparent to show the background */
+    animation: shimmer 4s;    /* Apply shimmer animation */
+}
+
+.hidden {
+    opacity: 0;                     /* Makes the element invisible */
+    transition: all 1s;              /* Smooth transition time */
+    filter: blur(5px);               /* Adds blur effect */
+    transform: translateX(-5%);    /* Moves the element off the screen to the left */
+}
+
+/* This media query handles users who prefer reduced motion for accessibility purposes */
+@media (prefers-reduced-motion) {
+    .hidden {
+        transition: none;            /* Disables transitions for users who prefer reduced motion */
+    }
+}
+
+.show {
+    opacity: 1;                      /* Makes the element fully visible */
+    filter: blur(0px);               /* Removes the blur effect */
+    transform: translateX(0);        /* Moves the element to its original position */
+}
+
+.article-bubble {
+    background-color: #f0f0f0;  /* Light background color for the bubble */
+    border: px solid #ccc;      /* Optional border */
+    padding: 15px;               /* Space inside the bubble */
+    border-radius: 15px;         /* Rounded corners */
+    margin: 20px 0;              /* Space between each bubble */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);  /* Adds a subtle shadow */
+    list-style: none;            /* Remove default bullet points */
+}
+
+.spacing {
+    padding-bottom: 30px;
+}
+.left-align {
+    float: left;
+}
+.right-align {
+    float: right;
+}
+.logos {
+    display: flex;
+}
+
+.logo:nth-child(2) {
+    transition-delay: 200ms;
+}
+.logo:nth-child(3) {
+    transition-delay: 500ms;
+}
+.logo:nth-child(4) {
+    transition-delay: 700ms;
+}
