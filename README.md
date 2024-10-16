@@ -1,6 +1,6 @@
 ## ROAD
 
-This is a Python-based web application that aggregates and displays news data about various topics, such as knife crime, theft, and drugs. The app pulls data from multiple APIs, cleans and processes the data, and stores it in a SQL database. The app uses **Flask** for the backend and displays the data via HTML, CSS, and JavaScript on the front end.
+This is a Python-based web application that aggregates and displays news data about various topics, such as knife, theft, and drug related crime. The app pulls data from multiple APIs, cleans and processes the data, and stores it in a SQL database. The app uses **Flask** for the backend and displays the data via HTML, CSS, and JavaScript on the front end.
 
 ## Table of Contents
 1. [Features](#features)
