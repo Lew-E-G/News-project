@@ -27,13 +27,14 @@
     <br>
     <ul>
         {% for article in articles | reverse %}
-        <li class="article-bubble ">
-            <a href="{{ article[3] }}" target="_blank">{{ article[0] }}</a> - {{article[2]}} 
-            <span class="right-align">Published on {{ article[1] }}</span>
+        <li class="article-bubble hidden"> <!-- Set initial hidden class here -->
+            <a href="{{ article[3] }}" target="_blank">{{ article[0] }}</a>
+            <p>{{ article[2] }}</p>
+            <span>Published on {{ article[1] }}</span>
         </li>
         {% endfor %}
     </ul>
-
+    
     <p>Page last loaded at: {{ current_time }}</p>
 
 </body>
