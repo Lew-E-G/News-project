@@ -1,7 +1,0 @@
-.gitignore
-/.DS_Store
-/__pycache__
-/keys.py
-/test_files
-/env
-/instance/cleaned_articles.db
