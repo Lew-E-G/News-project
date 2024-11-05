@@ -37,6 +37,11 @@ def home():
 
 @app.route('/knife-crime', methods=['GET', 'POST'])
 def knife_crime():
+        # Check if the user is authenticated
+    if not session.get('authenticated'):
+        flash('Please log in to access this page.')
+        return redirect(url_for('login'))
+    
     page_title = 'Knife Crime'
     #refresh button
     if request.method == 'POST':
@@ -73,6 +78,11 @@ def knife_crime():
 
 @app.route('/theft', methods=['GET', 'POST'])
 def theft():
+        # Check if the user is authenticated
+    if not session.get('authenticated'):
+        flash('Please log in to access this page.')
+        return redirect(url_for('login'))
+    
     page_title = 'Theft and Robbery'
     #refresh button
     if request.method == 'POST':
@@ -110,6 +120,12 @@ def theft():
 # additional category to add on the backend
 # @app.route('/drugs', methods=['GET', 'POST'])
 # def drugs():
+
+    #     # Check if the user is authenticated
+    # if not session.get('authenticated'):
+    #     flash('Please log in to access this page.')
+    #     return redirect(url_for('login'))
+    
     # title = 'Drugs'
     # Refresh button
     # if request.method == 'POST':
