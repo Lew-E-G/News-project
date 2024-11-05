@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template, request, flash, url_for, redirect
+from flask import Flask, render_template, request, flash, url_for, redirect, session
 import os
 from main import data_refresh
 from datetime import datetime
@@ -20,6 +20,7 @@ def login():
         password = request.form.get('password')
         # Placeholder for actual authentication logic
         if username == "user" and password == "pass":  # Example check
+            session['authenticated'] = True  # Set authentication status
             return redirect(url_for('home'))  # Redirect to home if login successful
         else:
             flash('Invalid credentials, please try again.')
@@ -29,6 +30,9 @@ def login():
 
 @app.route('/home')
 def home():
+    if not session.get('authenticated'):  # Check if user is authenticated
+        flash('Please log in to access this page.')
+        return redirect(url_for('login'))
     return render_template('index.html')  # Render the main page after login
 
 @app.route('/knife-crime', methods=['GET', 'POST'])
