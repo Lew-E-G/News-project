@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template,request, flash
+from flask import Flask, render_template, request, flash, url_for, redirect
 import os
 from main import data_refresh
 from datetime import datetime
@@ -9,8 +9,27 @@ app.secret_key = 'a_random_and_secure_string'
 
 
 @app.route('/')
+def index():
+    return redirect(url_for('login'))  # Redirect root to login
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Process login form (e.g., check username and password)
+        username = request.form.get('username')
+        password = request.form.get('password')
+        # Placeholder for actual authentication logic
+        if username == "user" and password == "pass":  # Example check
+            return redirect(url_for('home'))  # Redirect to home if login successful
+        else:
+            flash('Invalid credentials, please try again.')
+            return redirect(url_for('login'))
+
+    return render_template('login.html')  # Render login page on GET
+
+@app.route('/home')
 def home():
-    return render_template('index.html')
+    return render_template('index.html')  # Render the main page after login
 
 @app.route('/knife-crime', methods=['GET', 'POST'])
 def knife_crime():
