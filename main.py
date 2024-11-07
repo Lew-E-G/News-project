@@ -1,5 +1,5 @@
-from API_Guardian import fetch_knife_guardian, fetch_theft_guardian
-from API_News import fetch_knife_bbc, fetch_theft_bbc
+from API_Guardian import fetch_knife_guardian, fetch_theft_guardian, fetch_drug_guardian
+from API_News import fetch_knife_bbc, fetch_theft_bbc, fetch_drug_bbc
 from cleanup import order_articles_db
 import pandas as pd
 import sqlite3
@@ -12,6 +12,8 @@ def data_refresh():
     guardian_knife_data = fetch_knife_guardian()
     bbc_theft_data = fetch_theft_bbc()
     guardian_theft_data = fetch_theft_guardian()
+    bbc_drug_data = fetch_drug_bbc()
+    guardian_drug_data = fetch_drug_guardian()
 
     def merge_df(bbc, guardian):
         #create DataFrames for the fetched data
@@ -30,12 +32,13 @@ def data_refresh():
     #merging dataframes from multiple sources by category
     df_allKnifeArticles = merge_df(bbc_knife_data, guardian_knife_data)
     df_allTheftArticles = merge_df(bbc_theft_data, guardian_theft_data)
+    df_allDrugArticles = merge_df(bbc_drug_data, guardian_drug_data)
 
     #create and connect to DB file
     db_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'cleaned_articles.db')
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
-    tables = ['knife_table', 'theft_table']
+    tables = ['knife_table', 'theft_table', 'drug_table']
 
     # Common table structure
     table_structure = '''
@@ -60,9 +63,17 @@ def data_refresh():
         )
     ''')
 
+    # Drug news table
+    cursor.execute(f'''
+        CREATE TABLE IF NOT EXISTS drug_table (
+            {table_structure}
+        )
+    ''') 
+
     #append data to relevant table 
     df_allKnifeArticles.to_sql('knife_table', conn, if_exists='append', index=False)
     df_allTheftArticles.to_sql('theft_table', conn, if_exists='append', index=False)
+    df_allDrugArticles.to_sql('drug_table', conn, if_exists='append', index=False)
 
     #function that clears duplicates and in db
     order_articles_db(tables)
