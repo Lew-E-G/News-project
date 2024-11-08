@@ -42,6 +42,12 @@ def knife_crime():
         flash('Please log in to access this page.')
         return redirect(url_for('login'))
     
+    try:
+        data_refresh()  # Call the refresh function
+        flash("Data refreshed successfully!", "success")  # Success message
+    except Exception as e:
+        flash(f"An error occurred during refresh: {str(e)}", "danger")  # Error message
+    
     page_title = 'Knife Crime'
     #refresh button
     if request.method == 'POST':
@@ -82,6 +88,12 @@ def theft():
     if not session.get('authenticated'):
         flash('Please log in to access this page.')
         return redirect(url_for('login'))
+    
+    try:
+        data_refresh()  # Call the refresh function
+        flash("Data refreshed successfully!", "success")  # Success message
+    except Exception as e:
+        flash(f"An error occurred during refresh: {str(e)}", "danger")  # Error message
     
     page_title = 'Theft and Robbery'
     #refresh button
@@ -125,6 +137,12 @@ def drugs():
     if not session.get('authenticated'):
         flash('Please log in to access this page.')
         return redirect(url_for('login'))
+
+    try:
+        data_refresh()  # Call the refresh function
+        flash("Data refreshed successfully!", "success")  # Success message
+    except Exception as e:
+        flash(f"An error occurred during refresh: {str(e)}", "danger")  # Error message
 
     page_title = 'Drugs'
     #refresh button
