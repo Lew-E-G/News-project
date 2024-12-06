@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="../static/CSS/login.css">
 </head>
 <body>
-    <h2>Login</h2>
+    <header>
+        <img src="../static/images/logo.png" alt="Website Logo" style="width: 100px;">
+    </header>
+        <h2>Login</h2>
     <form action="{{ url_for('login') }}" method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br>
