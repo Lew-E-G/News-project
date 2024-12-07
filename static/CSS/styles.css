@@ -26,6 +26,16 @@ html, body {
     font-family: 'Cairo', sans-serif;
 }
 
+header {
+    position: absolute;
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+}
+
+header img {
+    width: 250px; /* Adjust the size of the logo */
+}
+
 h1 {
     font-size: 60px;
     color: rgb(216, 216, 216);
