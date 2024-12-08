@@ -9,7 +9,9 @@
 </head>
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="Website Logo" style="width: 100px;">
+        <form action="{{ url_for('home') }}" method="GET">
+            <img src="../static/images/logo.png" alt="Website Logo" style="width: 100px;" onclick="">
+        </form>
     </header>
     <h1>{{page_title}}</h1>
     {% with messages = get_flashed_messages(with_categories=true) %}
